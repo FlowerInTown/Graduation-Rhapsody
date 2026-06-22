@@ -10,7 +10,7 @@ import { pointInRect } from '../utils.js';
 
 const buttons = [
   { label: '开始旅途', y: 0, w: 220, h: 50 },
-  { label: 'Dev Info', y: 0, w: 220, h: 50 },
+  { label: '开发者信息', y: 0, w: 220, h: 50 },
 ];
 
 let hoverIndex = -1;
@@ -119,7 +119,8 @@ export const mainMenuScene = {
             switchScene('prologue');
           }
         } else if (i === 1) {
-          credits.start();
+          // 主菜单"开发者信息": 独立文本 + 静态居中显示(不滚动), 点击任意处关闭
+          credits.start(null, credits.developerInfoSections, false);
         }
         return;
       }
