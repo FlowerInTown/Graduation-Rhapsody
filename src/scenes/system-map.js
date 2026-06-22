@@ -181,7 +181,11 @@ export const systemMapScene = {
       if (dist(x, y, px, py) <= pr) {
         const isCurPlanet = (viewingSystem.id === gameState.ship.currentSystemId
                             && planet.id === gameState.ship.currentPlanetId);
-        if (isCurPlanet) return;
+        if (isCurPlanet) {
+          // 点击当前所在行星：直接回到行星探索画面，保留落地后的状态
+          switchSceneNoInit('planetExplore');
+          return;
+        }
 
         const isSameSystem = viewingSystem.id === gameState.ship.currentSystemId;
         let cost;

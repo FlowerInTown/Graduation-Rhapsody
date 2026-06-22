@@ -267,8 +267,9 @@ export const planetExploreScene = {
       }
     }
 
-    // 反派 NPC 判定：未刷出正派 NPC 且非故乡，按概率刷反派
-    if (!npcHasNpc && !isHomePlanet && BAD_NPC_COUNT > 0 && Math.random() < BAD_NPC_SPAWN_CHANCE) {
+    // 反派 NPC 判定：未刷出正派 NPC 且非故乡、非起始星球(新手引导关)，按概率刷反派
+    const isStartPlanet = (sysId === gameState.startSystemId && plId === 0);
+    if (!npcHasNpc && !isHomePlanet && !isStartPlanet && BAD_NPC_COUNT > 0 && Math.random() < BAD_NPC_SPAWN_CHANCE) {
       const idx = 1 + Math.floor(Math.random() * BAD_NPC_COUNT);
       const candidateKey = `bad_npc_${idx}`;
       if (assets.has(candidateKey)) {
@@ -1188,6 +1189,23 @@ function drawBadNpcDialog(ctx) {
   ctx.fillText('▼ 点击继续', W / 2, H - 12);
 }
 
+// 按钮悬浮放大倍数
+const BTN_HOVER_SCALE = 1.1;
+
+// 以按钮中心为锚点绘制可悬浮放大的按钮图像
+function drawHoverableButton(ctx, img, bx, by, bw, bh, extraDraw) {
+  const hovered = !tutorial.isActive() && pointInRect(input.mx, input.my, bx, by, bw, bh);
+  const scale = hovered ? BTN_HOVER_SCALE : 1;
+  const cx = bx + bw / 2;
+  const cy = by + bh / 2;
+  const dw = bw * scale;
+  const dh = bh * scale;
+  const dx = cx - dw / 2;
+  const dy = cy - dh / 2;
+  if (extraDraw) extraDraw(dx, dy, dw, dh);
+  ctx.drawImage(img, dx, dy, dw, dh);
+}
+
 function drawTooltip(ctx, text, bx, by, bw, bh) {
   if (tutorial.isActive()) return;
   if (!pointInRect(input.mx, input.my, bx, by, bw, bh)) return;
@@ -1222,7 +1240,7 @@ function drawDetectorButton(ctx, time) {
     if (npcHasNpc && !npcTalked && detectorFlashing) {
       ctx.globalAlpha = 0.5 + Math.sin(time * 6) * 0.5;
     }
-    ctx.drawImage(dImg, dx, dy, dw, dh);
+    drawHoverableButton(ctx, dImg, dx, dy, dw, dh);
     ctx.restore();
     ctx.font = '12px serif';
     drawTooltip(ctx, DETECTOR_BTN_TOOLTIP, dx, dy, dw, dh);
@@ -1238,7 +1256,7 @@ function drawDetectorButton(ctx, time) {
     if (summoningNpc) {
       ctx.globalAlpha = 0.5 + Math.sin(time * 8) * 0.5;
     }
-    ctx.drawImage(fImg, fx, fy, fw, fh);
+    drawHoverableButton(ctx, fImg, fx, fy, fw, fh);
     ctx.restore();
     ctx.font = '12px serif';
     drawTooltip(ctx, FIND_FRIEND_BTN_TOOLTIP, fx, fy, fw, fh);
@@ -1256,7 +1274,7 @@ function drawDetectorButton(ctx, time) {
       const iconH = mapIcon.height * GALAXY_MAP_BTN_SCALE;
       const mapX = W - GALAXY_MAP_BTN_MARGIN_RIGHT - iconW;
       const mapY = H - GALAXY_MAP_BTN_MARGIN_BOTTOM - iconH;
-      ctx.drawImage(mapIcon, mapX, mapY, iconW, iconH);
+      drawHoverableButton(ctx, mapIcon, mapX, mapY, iconW, iconH);
       drawTooltip(ctx, '星系地图', mapX, mapY, iconW, iconH);
     }
   }
@@ -1356,7 +1374,7 @@ function drawActionBar(ctx, time) {
     return;
   }
 
-  ctx.drawImage(img, bx, by, bw, bh);
+  drawHoverableButton(ctx, img, bx, by, bw, bh);
   drawTooltip(ctx, HARVEST_BTN_TOOLTIP, bx, by, bw, bh);
 }
 

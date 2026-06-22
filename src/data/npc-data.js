@@ -2,7 +2,7 @@ export const NPC_LIST = [
   {
     name: '穆恩·彼鲁柯',
     profile_asset: 'assets/characters/creature/laiyue.png',
-    appear_at: {"planet_type":"ice_giant", "explore_range":{"min":2,"max":2}},
+    appear_at: {"planet_type":"ice_giant", "explore_range":{"min":1,"max":2}},
     dialogue: [
   '你好呀，远方的旅行者！',
   '是啊，你看这颗蓝色矿石，它的颜色和我故乡的天空几乎一模一样。',
@@ -62,7 +62,7 @@ my_dialogue: [
   {
     name: '雷柏',
     profile_asset: 'assets/characters/creature/fanli.png',
-    appear_at: {"planet_type":"terrestrial", "explore_range":{"min":2,"max":2}},
+    appear_at: {"planet_type":"terrestrial", "explore_range":{"min":1,"max":2}},
     dialogue: [
   '嘿！新朋友，终于见到你了，看起来你也是喜欢到处旅行的人。',          // 1
   '噢，地球...我的家乡是一整颗被丛林覆盖的星球，树木高得能遮住云层，第一次来的人都会迷路。', // 3
@@ -115,7 +115,7 @@ my_dialogue: [
   {
     name: '茉宁',
     profile_asset: 'assets/characters/creature/gc.png',
-    appear_at: {"planet_type":"dwarf_planet", "explore_range":{"min":2,"max":2}},
+    appear_at: {"planet_type":"dwarf_planet", "explore_range":{"min":1,"max":2}},
     dialogue: [
       '哦，来了个奇怪的家伙。',                    // 1
       '你不必知道我是谁，你来做什么。',      // 3
@@ -175,7 +175,7 @@ my_dialogue: [
   {
     name: '奥波索',
     profile_asset: 'assets/characters/creature/qiangchen.png',
-    appear_at: {"planet_type":"rocky_terrestrial", "explore_range":{"min":2,"max":2}},
+    appear_at: {"planet_type":"rocky_terrestrial", "explore_range":{"min":1,"max":2}},
     dialogue: [
       '愿宇宙之光指引你，旅行者。',        // 1
       '我的触须能感知周围的能量。',        // 3
@@ -183,7 +183,7 @@ my_dialogue: [
       '不管宇宙如何变化，修行永远是通往真理的最佳途径，你内心有一股纯净的力量。',          // 7
       '我能感觉到你内心的力量，你在旅行中有感受到宇宙最沉静的声音吗？',        // 9
       '宇宙中万物皆有其运行的规律，当你明白时，就可以和宇宙合一。',          // 11
-      '...容我沉默2秒...',      // 13
+      '...你很幽默，年轻人...',      // 13
       '你是为了什么而出发',        // 15
       '那你又为何想要回家',          // 17
       '不过你虽然迷茫，旅途中也有让你觉得珍贵的东西吧',        // 19
