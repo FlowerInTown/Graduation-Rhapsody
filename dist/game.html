@@ -124,7 +124,7 @@ const ACTION_BAR_ALPHA = 0.4;         // 底部工具栏半透明背景透明度
 const TUTORIAL_SKIP = true;          // 开启后跳过新手引导
 
 // ----- 调试 -----
-const DEBUG_START_NEAR_HOME = true;  // 开启后出生点直接放在故乡行星附近的星系（方便测试结局流程）
+const DEBUG_START_NEAR_HOME = false;  // 开启后出生点直接放在故乡行星附近的星系（方便测试结局流程）
 
 // ----- 序章 -----
 const PROLOGUE_SKIP = false;          // 开启后跳过序章
@@ -139,7 +139,7 @@ const HOME_NPC_APPEAR_DELAY = 1.5;
 
 // ----- 反派 NPC -----
 // 正常 NPC 不刷的行星，按此概率刷反派 NPC（0~1）
-const BAD_NPC_SPAWN_CHANCE = 0.99;
+const BAD_NPC_SPAWN_CHANCE = 0.01;
 // assets/characters/bad_npc 下可用素材数量（编号 1.png ~ N.png）
 const BAD_NPC_COUNT = 1;
 // 反派 NPC 落地台词播完后，延迟多少秒自动出场
@@ -1464,7 +1464,7 @@ my_dialogue: [
       '不管宇宙如何变化，修行永远是通往真理的最佳途径，你内心有一股纯净的力量。',          // 7
       '我能感觉到你内心的力量，你在旅行中有感受到宇宙最沉静的声音吗？',        // 9
       '宇宙中万物皆有其运行的规律，当你明白时，就可以和宇宙合一。',          // 11
-      '...容我沉默2秒...',      // 13
+      '...你很幽默，年轻人...',      // 13
       '你是为了什么而出发',        // 15
       '那你又为何想要回家',          // 17
       '不过你虽然迷茫，旅途中也有让你觉得珍贵的东西吧',        // 19
