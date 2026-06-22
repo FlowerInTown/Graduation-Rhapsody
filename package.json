@@ -1,8 +1,8 @@
 {
-  "name": "star-drifter",
+  "name": "Stellar-Friends",
   "version": "1.0.0",
   "private": true,
-  "description": "星际漂流者 - A point-and-click adventure game",
+  "description": "银河友人 - A point-and-click adventure game",
   "scripts": {
     "dev": "npx serve . -p 3000 -s",
     "build": "node build.js"
